@@ -5,14 +5,17 @@ REMHOST=$1
 REMPORT=${2:-443}
 
 KEYSTORE_PASS=changeit
-KEYTOOL="sudo keytool"
+#KEYTOOL="sudo keytool"
+KEYTOOL="sudo $JAVA_HOME/bin/keytool"
 
 # /etc/java-6-sun/security/cacerts
 
-for CACERTS in 	/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts \
-	/usr/lib/jvm/java-7-oracle/jre/lib/security/cacerts \
-	"/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/security/cacerts" \
-	"/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/MacOS/itms/java/lib/security/cacerts"
+#for CACERTS in         /usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts \
+#       /usr/lib/jvm/java-7-oracle/jre/lib/security/cacerts \
+#       "/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/security/cacerts" \
+#       "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/MacOS/itms/java/lib/security/cacerts"
+for CACERTS in $JAVA_HOME/lib/security/cacerts
+
 do
 
 if [ -e "$CACERTS" ]
